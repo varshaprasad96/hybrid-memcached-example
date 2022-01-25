@@ -164,11 +164,11 @@ func (r *MemcachedBackupReconciler) deploymentForMemcached(m *cachev1.MemcachedB
 				Spec: corev1.PodSpec{
 					Containers: []corev1.Container{{
 						Image:   "memcached:1.4.36-alpine",
-						Name:    "memcached",
+						Name:    "memcachedbackup",
 						Command: []string{"memcached", "-m=64", "-o", "modern", "-v"},
 						Ports: []corev1.ContainerPort{{
 							ContainerPort: 11211,
-							Name:          "memcached",
+							Name:          "memcachedbackup",
 						}},
 					}},
 				},
@@ -183,7 +183,7 @@ func (r *MemcachedBackupReconciler) deploymentForMemcached(m *cachev1.MemcachedB
 // labelsForMemcached returns the labels for selecting the resources
 // belonging to the given memcached CR name.
 func labelsForMemcached(name string) map[string]string {
-	return map[string]string{"app": "memcached", "memcached_cr": name}
+	return map[string]string{"app": "memcachedbackup", "memcached_cr": name}
 }
 
 // getPodNames returns the pod names of the array of pods passed in
