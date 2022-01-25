@@ -30,7 +30,7 @@ spec:
   nodeSelector: {}
   podAnnotations: {}
   podSecurityContext: {}
-  replicaCount: 1
+  replicaCount: 3
   resources: {}
   securityContext: {}
   service:

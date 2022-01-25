@@ -3,4 +3,5 @@
 # It should be run by config/default
 resources:
 - bases/cache.my.domain_memcacheds.yaml
+- bases/cache.my.domain_memcachedbackups.yaml
 #+kubebuilder:scaffold:crdkustomizeresource

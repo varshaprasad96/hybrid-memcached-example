@@ -1,42 +1,24 @@
+
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
+  creationTimestamp: null
   name: manager-role
 rules:
-##
-## Base operator rules
-##
-# We need to get namespaces so the operator can read namespaces to ensure they exist
 - apiGroups:
   - ""
   resources:
   - namespaces
   verbs:
   - get
-# We need to manage Helm release secrets
 - apiGroups:
-  - ""
+  - apps
   resources:
-  - secrets
-  verbs:
-  - "*"
-# We need to create events on CRs about things happening during reconciliation
-- apiGroups:
-  - ""
-  resources:
-  - events
-  verbs:
-  - create
-
-##
-## Rules for cache.my.domain/v1alpha1, Kind: Memcached
-##
-- apiGroups:
-  - cache.my.domain
-  resources:
-  - memcacheds
-  - memcacheds/status
-  - memcacheds/finalizers
+  - deployments
+  - daemonsets
+  - replicasets
+  - statefulsets
   verbs:
   - create
   - delete
@@ -45,18 +27,55 @@ rules:
   - patch
   - update
   - watch
-- verbs:
-  - "*"
-  apiGroups:
+- apiGroups:
+  - cache.my.domain
+  resources:
+  - memcachedbackups
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cache.my.domain
+  resources:
+  - memcachedbackups/finalizers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
   - ""
   resources:
-  - "serviceaccounts"
-  - "services"
-- verbs:
-  - "*"
-  apiGroups:
-  - "apps"
+  - pods
+  - services
+  - services/finalizers
+  - endpoints
+  - persistentvolumeclaims
+  - events
+  - configmaps
+  - secrets
+  - serviceaccounts
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - cache.my.domain
   resources:
-  - "deployments"
-
-#+kubebuilder:scaffold:rules
+  - memcachedbackups/status
+  verbs:
+  - get
+  - patch
+  - update
