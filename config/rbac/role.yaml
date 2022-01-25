@@ -29,14 +29,14 @@ rules:
   - create
 
 ##
-## Rules for demo.my.domain/v1alpha1, Kind: Nginx
+## Rules for cache.my.domain/v1alpha1, Kind: Memcached
 ##
 - apiGroups:
-  - demo.my.domain
+  - cache.my.domain
   resources:
-  - nginxes
-  - nginxes/status
-  - nginxes/finalizers
+  - memcacheds
+  - memcacheds/status
+  - memcacheds/finalizers
   verbs:
   - create
   - delete

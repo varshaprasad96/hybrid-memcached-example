@@ -1,13 +1,13 @@
-# permissions for end users to edit nginxes.
+# permissions for end users to edit memcacheds.
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: nginx-editor-role
+  name: memcached-editor-role
 rules:
 - apiGroups:
-  - demo.my.domain
+  - cache.my.domain
   resources:
-  - nginxes
+  - memcacheds
   verbs:
   - create
   - delete
@@ -17,8 +17,8 @@ rules:
   - update
   - watch
 - apiGroups:
-  - demo.my.domain
+  - cache.my.domain
   resources:
-  - nginxes/status
+  - memcacheds/status
   verbs:
   - get

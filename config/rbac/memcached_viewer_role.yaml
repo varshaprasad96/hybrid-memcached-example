@@ -1,20 +1,20 @@
-# permissions for end users to view nginxes.
+# permissions for end users to view memcacheds.
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: nginx-viewer-role
+  name: memcached-viewer-role
 rules:
 - apiGroups:
-  - demo.my.domain
+  - cache.my.domain
   resources:
-  - nginxes
+  - memcacheds
   verbs:
   - get
   - list
   - watch
 - apiGroups:
-  - demo.my.domain
+  - cache.my.domain
   resources:
-  - nginxes/status
+  - memcacheds/status
   verbs:
   - get

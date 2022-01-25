@@ -1,9 +1,9 @@
-apiVersion: demo.my.domain/v1alpha1
-kind: Nginx
+apiVersion: cache.my.domain/v1alpha1
+kind: Memcached
 metadata:
-  name: nginx-sample
+  name: memcached-sample
 spec:
-  # Default values copied from <project_dir>/helm-charts/nginx/values.yaml
+  # Default values copied from <project_dir>/helm-charts/memcached/values.yaml
   affinity: {}
   autoscaling:
     enabled: false
