@@ -13,4 +13,4 @@ kind: Kustomization
 images:
 - name: controller
   newName: quay.io/vnarsing/memcached-operator
-  newTag: "15"
+  newTag: "16"
